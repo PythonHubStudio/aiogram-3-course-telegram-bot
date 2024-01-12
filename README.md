@@ -1,1 +1,2 @@
-# aiogram-3-course-telegram-bot
+# Код из курса по созданию бота для Telegram, YT канала Python Hub Studio
+Код из каждого видео плейлиста в отдельной папке lesson_1, 2, .. и так далее
