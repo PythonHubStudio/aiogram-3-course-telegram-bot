@@ -22,7 +22,7 @@ ADMIN_KB = get_keyboard(
 
 
 @admin_router.message(Command("admin"))
-async def add_product(message: types.Message):
+async def admin_features(message: types.Message):
     await message.answer("Что хотите сделать?", reply_markup=ADMIN_KB)
 
 
@@ -82,7 +82,7 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
 #Вернутся на шаг назад (на прошлое состояние)
 @admin_router.message(StateFilter('*'), Command("назад"))
 @admin_router.message(StateFilter('*'), F.text.casefold() == "назад")
-async def cancel_handler(message: types.Message, state: FSMContext) -> None:
+async def back_step_handler(message: types.Message, state: FSMContext) -> None:
 
     current_state = await state.get_state()
 
@@ -115,7 +115,7 @@ async def add_name(message: types.Message, state: FSMContext):
 
 #Хендлер для отлова некорректных вводов для состояния name
 @admin_router.message(AddProduct.name)
-async def add_name(message: types.Message, state: FSMContext):
+async def add_name2(message: types.Message, state: FSMContext):
     await message.answer("Вы ввели не допустимые данные, введите текст названия товара")
 
 
@@ -129,7 +129,7 @@ async def add_description(message: types.Message, state: FSMContext):
 
 #Хендлер для отлова некорректных вводов для состояния description
 @admin_router.message(AddProduct.description)
-async def add_description(message: types.Message, state: FSMContext):
+async def add_description2(message: types.Message, state: FSMContext):
     await message.answer("Вы ввели не допустимые данные, введите текст описания товара")
 
 
@@ -149,7 +149,7 @@ async def add_price(message: types.Message, state: FSMContext):
 
 #Хендлер для отлова некорректных ввода для состояния price
 @admin_router.message(AddProduct.price)
-async def add_price(message: types.Message, state: FSMContext):
+async def add_price2(message: types.Message, state: FSMContext):
     await message.answer("Вы ввели не допустимые данные, введите стоимость товара")
 
 
@@ -164,5 +164,5 @@ async def add_image(message: types.Message, state: FSMContext):
     await state.clear()
 
 @admin_router.message(AddProduct.image)
-async def add_image(message: types.Message, state: FSMContext):
+async def add_image2(message: types.Message, state: FSMContext):
     await message.answer("Отправьте фото пищи")
